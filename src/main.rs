@@ -211,17 +211,23 @@ fn replace_devision_templates(tag: &str, output_data: &mut String, input_data: &
 }
 
 fn main() {
-    print!("Из какого сейва: ");
-    let input_path: String = text_io::read!("{}\n");
+    let args: Vec<String> = std::env::args().skip(1).collect();
+    if args.len() < 2 {
+        println!("Неверное количество аргументов");
+        std::process::exit(1);
+    }
 
-    print!("В какой: ");
-    let output_path: String = text_io::read!("{}\n");
+    let input_path = args[0].to_owned();
+    let output_path = args[1].to_owned();
+
+    println!("Из {:?}\nв {:?}", input_path, output_path);
 
     print!("Страна (GER, SOV): ");
-    let target_country: String = text_io::read!("{}\n");
+    let mut target_country: String = text_io::read!("{}\n");
+    target_country = target_country.replace("\r", "").replace("\n", "").replace("\t", "");
 
     let input_data = std::fs::read_to_string(&input_path).unwrap();
-    let mut output_data =std::fs::read_to_string(&output_path).unwrap();
+    let mut output_data = std::fs::read_to_string(&output_path).unwrap();
 
     let input_file = hoi4save::Hoi4File::from_slice(input_data.as_bytes()).unwrap();
 

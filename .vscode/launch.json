@@ -1,0 +1,48 @@
+{
+    // Используйте IntelliSense, чтобы узнать о возможных атрибутах.
+    // Наведите указатель мыши, чтобы просмотреть описания существующих атрибутов.
+    // Для получения дополнительной информации посетите: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'hoi4-saves-merger'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=hoi4-saves-merger",
+                    "--package=hoi4-saves-merger"
+                ],
+                "filter": {
+                    "name": "hoi4-saves-merger",
+                    "kind": "bin"
+                }
+            },
+            "args": [
+                "C:\\Users\\Admin\\Documents\\Paradox Interactive\\Hearts of Iron IV\\save games\\GER.hoi4", 
+                "C:\\Users\\Admin\Documents\\Paradox Interactive\\Hearts of Iron IV\\save games\\GER2.hoi4"
+            ],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'hoi4-saves-merger'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=hoi4-saves-merger",
+                    "--package=hoi4-saves-merger"
+                ],
+                "filter": {
+                    "name": "hoi4-saves-merger",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
